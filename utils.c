@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/09 15:59:12 by hfazaz            #+#    #+#             */
+/*   Updated: 2024/07/09 15:59:12 by hfazaz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 char	**ft_join_args(char **argv)
@@ -12,7 +24,6 @@ char	**ft_join_args(char **argv)
 	while (argv[i])
 	{
 		str = ft_strjoin(tmp, argv[i]);
-		free(tmp);
 		tmp = ft_strjoin(str, " \0");
 		free(str);
 		i++;
@@ -21,13 +32,15 @@ char	**ft_join_args(char **argv)
 	free(tmp);
 	return (res);
 }
-void   ft_add_front(t_stack **stack, t_stack *new)
+//add front
+void	ft_add_front(t_stack **stack, t_stack *new)
 {
 	if (!new)
 		return ;
 	new->next = *stack;
 	*stack = new;
 }
+//add back
 void	ft_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*tmp;

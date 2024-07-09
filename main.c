@@ -6,62 +6,91 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/05 01:46:51 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/09 00:49:09 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void init_stack(t_stack **sa, char **av)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+
+int ft_atoi(const char *str)
+{
+    int i = 0;
+    int sign = 1;
+    int result = 0;
+
+    while (isspace(str[i])) 
+        i++;
+    if (str[i] == '-')
+        sign = -1;
+    if (str[i] == '-' || str[i] == '+')
+        i++;
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + str[i] - '0';
+        i++;
+    }
+    return (result * sign);
+}
+
+t_stack *init_stack(t_stack **stack, char **matrix)
 {
     t_stack *new;
-    t_stack *tmp;
     int i = 0;
-    while(**av)
-    {
-        new = malloc(sizeof(t_stack));
-        new->data = atoi(*av);
-        new->next = NULL;
-        if (!*sa)
-            *sa = new;
-        else
-        {
-            tmp = *sa;
-            while(tmp->next)
-                tmp = tmp->next;
-            tmp->next = new;
-        }
-        av++;
-    }
-}
-void print_stack(t_stack *stack)
-{
-    t_stack *current = stack;
 
-    while (current != NULL) {
-        printf("%d\n", current->data);
-        current = current->next;
+    while (*matrix[i] != '\0')
+    {
+        new = (t_stack *)malloc(sizeof(t_stack));
+        if (!new)
+            return NULL;
+        new->data = ft_atoi(matrix[i]);
+        new->next = NULL;
+        ft_add_back(stack, new);
+        i++;
     }
+    return *stack;
 }
+
 int main(int ac, char **av)
 {
     if (ac < 2)
         return 0;
 
-    t_stack *sa = NULL;
-    t_stack *sb = NULL;
-    char **av1 = ft_join_args(av);
-    
-    init_stack(&sa, av1); 
-    // printf("Original sa:\n");
-    // print_stack(sa); 
-
-    sort_four(&sa,&sb); 
-    // printf("After , sa:\n");
-    // print_stack(sa);
-
-
+    char **matrix;
+    matrix = ft_join_args(av);
+    if (!matrix)
+        return 0;
+    int len = 0;
+    while (*matrix[len] != '\0')
+        len++;
+    int tab[len];
+    int i = 0;
+    while (i < len)
+    {
+        tab[i] = ft_atoi(matrix[i]);
+        i++;
+    }
+    t_stack *stack_a = NULL;
+    t_stack *stack_b = NULL;
+    i= 0 ;
+    stack_a = init_stack(&stack_a, matrix);
+    sort_tab(tab, len);
+    if(len == 3)
+        sort_three(&stack_a);
+    else if(len > 5 && len <= 100)
+        sort(&stack_a, &stack_b,tab,len,len/4);
+    else
+        sort(&stack_a, &stack_b,tab,len,30);
+    while(*matrix)
+    {
+        free(*matrix);
+        matrix++;
+    }
+    free(matrix);
     return 0;
+   
 }
-
-
-
