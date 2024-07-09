@@ -21,3 +21,26 @@ char	**ft_join_args(char **argv)
 	free(tmp);
 	return (res);
 }
+void   ft_add_front(t_stack **stack, t_stack *new)
+{
+	if (!new)
+		return ;
+	new->next = *stack;
+	*stack = new;
+}
+void	ft_add_back(t_stack **stack, t_stack *new)
+{
+	t_stack	*tmp;
+
+	if (!new)
+		return ;
+	if (!*stack)
+	{
+		*stack = new;
+		return ;
+	}
+	tmp = *stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}
