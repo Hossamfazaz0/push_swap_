@@ -25,14 +25,14 @@ char	**ft_join_args(char **argv)
 	{
 		str = ft_strjoin(tmp, argv[i]);
 		tmp = ft_strjoin(str, " \0");
-		free(str);
 		i++;
 	}
 	res = ft_split(tmp, ' ');
 	free(tmp);
+
 	return (res);
 }
-//add front
+
 void	ft_add_front(t_stack **stack, t_stack *new)
 {
 	if (!new)
@@ -40,7 +40,6 @@ void	ft_add_front(t_stack **stack, t_stack *new)
 	new->next = *stack;
 	*stack = new;
 }
-//add back
 void	ft_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*tmp;

@@ -21,7 +21,7 @@ void rotate_reverse_a(t_stack **sa)
         tmp = tmp->next;
     ft_add_front(sa, tmp->next);
     tmp->next = NULL;
-    // write(1, "rra\n", 4);
+    write(1, "rra\n", 4);
 }
 
 void rotate_reverse_b(t_stack **sb)

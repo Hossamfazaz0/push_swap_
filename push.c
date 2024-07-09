@@ -26,15 +26,14 @@ void push_a(t_stack**sa,t_stack**sb)
 void push_b(t_stack **sa, t_stack **sb)
 {
     if (sa == NULL || *sa == NULL) {
-        return; // Handle edge case where stack A is empty
+        return;
     }
     
-    t_stack *tmp = *sa; // Store the top of stack A
-    *sa = (*sa)->next;  // Move the top of stack A to the next node
-    tmp->next = *sb;    // Point the next of tmp to the top of stack B
-    *sb = tmp;          // Move tmp to the top of stack B
+    t_stack *tmp = *sa; 
+    *sa = (*sa)->next;  
+    tmp->next = *sb;  
+    *sb = tmp;      
 
-    // Optional: Uncomment the next line to print the operation
     write(1, "pb\n", 3);
 }
 

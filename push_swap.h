@@ -37,7 +37,7 @@ typedef struct s_stack
 
 int		ft_strlen(char *str);
 char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str, char c);
 char	**ft_join_args(char **argv);
 void   ft_add_front(t_stack **stack, t_stack *new);
