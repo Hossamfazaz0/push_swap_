@@ -37,44 +37,44 @@ int ft_atoi(const char *str)
     return (result * sign);
 }
 
-t_stack *init_stack(t_stack **stack, char **argv1)
+t_stack *init_stack(t_stack **stack, char **numbers)
 {
     t_stack *new;
     int i = 0;
 
-    while (*argv1[i] != '\0')
+    while (*numbers[i] != '\0')
     {
         new = (t_stack *)malloc(sizeof(t_stack));
         if (!new)
             return NULL;
-        new->data = ft_atoi(argv1[i]);
+        new->data = ft_atoi(numbers[i]);
         new->next = NULL;
         ft_add_back(stack, new);
         i++;
     }
     return *stack;
 }
-void free_mem(t_stack *sa, t_stack *sb,char **av)
+void free_stack(t_stack *sa,t_stack *sb ,char **numbers)
 {
-    int     i;
-    t_stack *tmp;
+	t_stack *tmp;
+	int	i;
 
-    i = 0;
-    while(av[i])
-        free(av[i++]);
-    free(av);
-    while(sa)
+	i = 0;
+	while(sa)
 	{
-		t_stack *tmp = sa;
+		tmp = sa;
 		sa = sa->next;
 		free(tmp);
 	}
-    while(sb)
+	while(sb)
 	{
-		t_stack *tmp = sb;
+		tmp = sb;
 		sb = sb->next;
 		free(tmp);
 	}
+	while (numbers[i])
+        free(numbers[i++]);
+    free(numbers);
 }
 
 int main(int ac, char **av)
@@ -82,20 +82,28 @@ int main(int ac, char **av)
     if (ac < 2)
         return 0;
     t_stack *sa = NULL;
-	t_stack *sb = NULL;
+    t_stack *sb = NULL;
     int len = 0;
-    int tab[len];
-    char **argv1;
-    
-    argv1 = ft_join_args(av);
-    if (!argv1)
+    char **numbers;
+    int i = 0;
+    numbers = ft_join_args(av);
+    if (!numbers)
         return 0;
-    while (*argv1[len] != '\0')
+    while (*numbers[len] != '\0')
         len++;
-    sa = init_stack(&sa, argv1);
+    int tab[len];
+    while (i < len)
+        tab[i++] = ft_atoi(numbers[i]);
+    sa = init_stack(&sa, numbers);
+    i = 0;
+    
     sort_tab(tab, len);
-    chose_sort(len,sa,sb,tab);
-	free_mem(sa,sb,argv1);
+    if(len == 3)
+        sort_three(&sa);
+    else if(len > 5 && len <= 100)
+        sort(&sa, &sb,tab,len,len/4);
+    else
+        sort(&sa, &sb,tab,len,30);
+	free_stack(sa,sb,numbers);
     return 0;
 }
-
