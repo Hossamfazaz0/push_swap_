@@ -42,6 +42,7 @@ char	**ft_split(char *str, char c);
 char	**ft_join_args(char **argv);
 void   ft_add_front(t_stack **stack, t_stack *new);
 void	ft_add_back(t_stack **stack, t_stack *new);
+int     ft_atoi(const char *str);
 void rotate_a(t_stack **sa);
 void rotate_b(t_stack **sb);
 void rotate_ab(t_stack **sa, t_stack **sb);
@@ -57,4 +58,5 @@ void sort_three(t_stack **sa);
 void sort_four(t_stack **sa, t_stack **sb);
 void sort(t_stack **sa, t_stack **sb, int *tab, int tab_size,int max);
 void sort_tab(int *tab,int len);
+void chose_sort(int len, t_stack *sa, t_stack *sb,int *tab);
 #endif

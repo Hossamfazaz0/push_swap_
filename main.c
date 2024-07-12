@@ -37,64 +37,65 @@ int ft_atoi(const char *str)
     return (result * sign);
 }
 
-t_stack *init_stack(t_stack **stack, char **matrix)
+t_stack *init_stack(t_stack **stack, char **argv1)
 {
     t_stack *new;
     int i = 0;
 
-    while (*matrix[i] != '\0')
+    while (*argv1[i] != '\0')
     {
         new = (t_stack *)malloc(sizeof(t_stack));
         if (!new)
             return NULL;
-        new->data = ft_atoi(matrix[i]);
+        new->data = ft_atoi(argv1[i]);
         new->next = NULL;
         ft_add_back(stack, new);
         i++;
     }
     return *stack;
 }
-void free_stack(t_stack *stack)
+void free_mem(t_stack *sa, t_stack *sb,char **av)
 {
-	while(stack)
+    int     i;
+    t_stack *tmp;
+
+    i = 0;
+    while(av[i])
+        free(av[i++]);
+    free(av);
+    while(sa)
 	{
-		t_stack *tmp = stack;
-		stack = stack->next;
+		t_stack *tmp = sa;
+		sa = sa->next;
 		free(tmp);
-		
+	}
+    while(sb)
+	{
+		t_stack *tmp = sb;
+		sb = sb->next;
+		free(tmp);
 	}
 }
+
 int main(int ac, char **av)
 {
     if (ac < 2)
         return 0;
-    t_stack *stack_a = NULL;
-    t_stack *stack_b = NULL;
+    t_stack *sa = NULL;
+	t_stack *sb = NULL;
     int len = 0;
-    char **matrix;
-    int i = 0;
-    matrix = ft_join_args(av);
-    if (!matrix)
-        return 0;
-    while (*matrix[len] != '\0')
-        len++;
     int tab[len];
-    while (i < len)
-        tab[i++] = ft_atoi(matrix[i]);
-    stack_a = init_stack(&stack_a, matrix);
-    i = 0;
-    while (matrix[i])
-        free(matrix[i++]);
-    free(matrix);
+    char **argv1;
+    
+    argv1 = ft_join_args(av);
+    if (!argv1)
+        return 0;
+    while (*argv1[len] != '\0')
+        len++;
+    sa = init_stack(&sa, argv1);
     sort_tab(tab, len);
-    if(len == 3)
-        sort_three(&stack_a);
-    else if(len > 5 && len <= 100)
-        sort(&stack_a, &stack_b,tab,len,len/4);
-    else
-        sort(&stack_a, &stack_b,tab,len,30);
-    free_stack(stack_a);
-	free_stack(stack_b);
-	
+    chose_sort(len,sa,sb,tab);
+	free_mem(sa,sb,argv1);
     return 0;
 }
+
