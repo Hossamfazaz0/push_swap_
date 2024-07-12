@@ -16,13 +16,15 @@
 #include <string.h>
 #include <ctype.h>
 
-
 int ft_atoi(const char *str)
 {
-    int i = 0;
-    int sign = 1;
-    int result = 0;
+    int i;
+    int sign;
+    int result;
 
+    i = 0;
+    sign = 1;
+    result = 0;
     while (isspace(str[i])) 
         i++;
     if (str[i] == '-')
@@ -40,8 +42,9 @@ int ft_atoi(const char *str)
 t_stack *init_stack(t_stack **stack, char **numbers)
 {
     t_stack *new;
-    int i = 0;
+    int i;
 
+    i = 0;
     while (*numbers[i] != '\0')
     {
         new = (t_stack *)malloc(sizeof(t_stack));
@@ -54,56 +57,88 @@ t_stack *init_stack(t_stack **stack, char **numbers)
     }
     return *stack;
 }
-void free_stack(t_stack *sa,t_stack *sb ,char **numbers)
-{
-	t_stack *tmp;
-	int	i;
 
-	i = 0;
-	while(sa)
-	{
-		tmp = sa;
-		sa = sa->next;
-		free(tmp);
-	}
-	while(sb)
-	{
-		tmp = sb;
-		sb = sb->next;
-		free(tmp);
-	}
-	while (numbers[i])
+void free_stack(t_stack *sa, t_stack *sb, char **numbers, int *tab)
+{
+    t_stack *tmp;
+    int i;
+
+    i = 0;
+    while (sa)
+    {
+        tmp = sa;
+        sa = sa->next;
+        free(tmp);
+    }
+    while (sb)
+    {
+        tmp = sb;
+        sb = sb->next;
+        free(tmp);
+    }
+    while (numbers[i])
         free(numbers[i++]);
     free(numbers);
+    free(tab);
+}
+
+int *table(char **numbers)
+{
+    int i;
+    int *tab;
+    int len;
+    int j;
+
+    j = 0;
+    i = 0;
+    len = 0;
+    while (numbers[len])
+        len++;
+    tab = (int *)malloc(sizeof(int) * len);
+    if (!tab)
+        return NULL;
+    while (i < len)
+    {
+        tab[i] = ft_atoi(numbers[i]);
+        i++;
+    }
+    tab = sort_tab(tab, len);
+    return tab;
 }
 
 int main(int ac, char **av)
 {
+    t_stack *sa;
+    t_stack *sb;
+    int len;
+    char **numbers;
+    int *tab;
+    
     if (ac < 2)
         return 0;
-    t_stack *sa = NULL;
-    t_stack *sb = NULL;
-    int len = 0;
-    char **numbers;
-    int i = 0;
+    sa = NULL;
+    sb = NULL;
     numbers = ft_join_args(av);
     if (!numbers)
         return 0;
-    while (*numbers[len] != '\0')
+    tab = table(numbers);
+
+    // sa = init_stack(&sa, numbers);
+    // if (len == 3)
+    //     sort_three(&sa);
+    // else if (len > 5 && len <= 100)
+    //     sort(&sa, &sb, tab, len, len / 4);
+    // else
+    //     sort(&sa, &sb, tab, len, 30);
+    //print table
+    // calculate the length of the table
+    len = 0;
+    while (numbers[len])
         len++;
-    int tab[len];
-    while (i < len)
-        tab[i++] = ft_atoi(numbers[i]);
-    sa = init_stack(&sa, numbers);
-    i = 0;
-    
-    sort_tab(tab, len);
-    if(len == 3)
-        sort_three(&sa);
-    else if(len > 5 && len <= 100)
-        sort(&sa, &sb,tab,len,len/4);
-    else
-        sort(&sa, &sb,tab,len,30);
-	free_stack(sa,sb,numbers);
+    len--;
+    printf("len = %d\n", len);
+
+    free_stack(sa, sb, numbers, tab);
     return 0;
 }
+

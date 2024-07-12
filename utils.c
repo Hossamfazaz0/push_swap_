@@ -33,6 +33,7 @@ char	**ft_join_args(char **argv)
 	return (res);
 }
 
+
 void	ft_add_front(t_stack **stack, t_stack *new)
 {
 	if (!new)

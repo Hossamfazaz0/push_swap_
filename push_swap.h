@@ -57,7 +57,7 @@ void swap_ab(t_stack **sa, t_stack **sb);
 void sort_three(t_stack **sa);
 void sort_four(t_stack **sa, t_stack **sb);
 void sort(t_stack **sa, t_stack **sb, int *tab, int tab_size,int max);
-void sort_tab(int *tab,int len);
-void fill_tab(char **av,int len,int *tab);
+int *sort_tab(int *tab,int len);
+int *tab_fill(char **argv);
 void chose_sort(int len, t_stack *sa, t_stack *sb,int *tab);
 #endif

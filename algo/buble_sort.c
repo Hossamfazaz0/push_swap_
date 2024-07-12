@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-void sort_tab(int *tab,int len)
+int *sort_tab(int *tab,int len)
 {
     int i = 0;
     int j = 0;
@@ -31,5 +31,5 @@ void sort_tab(int *tab,int len)
         i++;
         
     }
-
+    return tab;
 }
