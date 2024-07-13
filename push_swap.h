@@ -19,6 +19,8 @@
 #include <string.h>
 #include <limits.h>
 #include <stdbool.h>
+#include <ctype.h>
+
 
 typedef struct s_stack
 {
