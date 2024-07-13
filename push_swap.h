@@ -23,14 +23,7 @@
 typedef struct s_stack
 {
     int data;
-    int index;
-    int final_index;
-    int push_price;
-    bool above;
-    bool cheapest;
     struct s_stack *next;
-    struct s_stack *prev;
-    struct s_stack *target;
 } t_stack;
 
 
