@@ -53,6 +53,7 @@ void sort_three(t_stack **sa);
 void sort_four(t_stack **sa, t_stack **sb);
 void sort(t_stack **sa, t_stack **sb, int *tab, int tab_size,int max);
 int *sort_tab(int *tab,int len);
-int *tab_fill(char **argv);
-void chose_sort(int len, t_stack *sa, t_stack *sb,int *tab);
+int *fill_tab(char **argv);
+void check_if_numerique(char **av);
+int chose_sort(int len, t_stack *sa, t_stack *sb,int *tab);
 #endif

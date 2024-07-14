@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/13 01:53:11 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/14 01:31:55 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,13 @@ int	main(int ac, char **av)
 	argv = ft_join_args(av);
 	if (!argv)
 		return (0);
+	
 	while (*argv[len] != '\0')
 		len++;
+	
 	tab = fill_tab(argv);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);
 	check_algo(sa,sb,tab,len,argv);
 	return (0);
-}
+} 

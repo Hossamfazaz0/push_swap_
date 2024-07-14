@@ -1,3 +1,4 @@
+#include "../push_swap.h"
 int check_doubles(int *tab,int len)
 {
     int	i;
@@ -8,37 +9,48 @@ int check_doubles(int *tab,int len)
 	{
 		j = 0;
 		if(tab[i] == tab[j])
-			return 0;
+			return 1;
 		j++;
 	}
 	i++;
-	return 1;
+	return 0;
 }
 void skip_spaces(char *av)
 {
-	while(*str && (*str == ' ' || *str == '\t'));
-		str++;
+	while(*av == ' ' || *av == '\t')
+		av++;
 }
 int is_num(char *av)
 {
-	while(*av)
+	int i;
+	
+	i = 0;
+
+	while(av[i])
 	{
-		if(*av >= '0' && *av <='9')
-			return 1;
-		else
+		skip_spaces(av);
+		if (av[i] == '-' || av[i] == '+')
+			i++;
+		if(av[i] < '0' || av[i] > '9')
 			return 0;
-	av++;
+	i++;
 	}
+	return 1;
 }
 int check_if_numerique(char **av)
 {
 	int i;
-
+	
 	i = 0;
-	while(*av[i]!= '\0')
+	while(av[i])
 	{
-		skip_spaces(av[i]);
-		
-		
+		if(!is_num(av[i]))
+		{
+			write(2,"Error\n",6);
+			return 0;
+		}
+		i++;
 	}
+	return 1;
+
 }
