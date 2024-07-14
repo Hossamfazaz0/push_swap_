@@ -108,6 +108,7 @@ void check_algo(t_stack *sa,t_stack *sb,int *tab,int len, char **argv)
 		sort(&sa, &sb, tab, len, 30);
 	free_stack(sa, sb, argv,tab);
 }
+
 int	main(int ac, char **av)
 {
 	if (ac < 4)
@@ -127,10 +128,12 @@ int	main(int ac, char **av)
 	while (*argv[len] != '\0')
 		len++;
 	if(!check_if_numerique(argv))
+	{
+		free_stack(sa,sb,argv,0);
 		return 0;
+	}
 	tab = fill_tab(argv);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);
 	check_algo(sa,sb,tab,len,argv);
-	return (0);
 } 
