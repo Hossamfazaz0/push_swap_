@@ -13,11 +13,11 @@
 #include "push_swap.h"
 
 
-int	ft_atoi(const char *str)
+double	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;
-	int	result;
+	double	result;
 
 	i = 0;
 	sign = 1;
@@ -110,7 +110,7 @@ void check_algo(t_stack *sa,t_stack *sb,int *tab,int len, char **argv)
 }
 int	main(int ac, char **av)
 {
-	if (ac < 2)
+	if (ac < 4)
 		return (0);
 	t_stack *sa;
 	t_stack *sb ;
@@ -124,10 +124,10 @@ int	main(int ac, char **av)
 	argv = ft_join_args(av);
 	if (!argv)
 		return (0);
-	
 	while (*argv[len] != '\0')
 		len++;
-	
+	if(!check_if_numerique(argv))
+		return 0;
 	tab = fill_tab(argv);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);
