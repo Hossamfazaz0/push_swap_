@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/14 01:31:55 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/15 23:19:23 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,12 @@ int *fill_tab(char **argv)
 }
 void check_algo(t_stack *sa,t_stack *sb,int *tab,int len, char **argv)
 {
+	if(check_doubles(tab,len))
+	{
+		write(2,"Error\n",6);
+		free_stack(sa, sb, argv,tab);
+		return ;
+	}
     if (len == 3)
 		sort_three(&sa);
 	else if (len > 5 && len <= 100)
@@ -123,17 +129,18 @@ int	main(int ac, char **av)
     sa = NULL;
     sb = NULL;
 	argv = ft_join_args(av);
-	if (!argv)
-		return (0);
-	while (*argv[len] != '\0')
-		len++;
 	if(!check_if_numerique(argv))
 	{
 		free_stack(sa,sb,argv,0);
 		return 0;
 	}
+	if (!argv)
+		return (0);
+	while (*argv[len] != '\0')
+		len++;
 	tab = fill_tab(argv);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);
 	check_algo(sa,sb,tab,len,argv);
+	
 } 

@@ -50,12 +50,12 @@ int check_if_numerique(char **av)
     i = 0;
     while (av[i])
     {
-        if (!is_num(av[i]) || ft_atoi(av[i]) > 2147483647)
+        if (!is_num(av[i]) || ft_atoi(av[i]) > 2147483647 )
         {
             write(2, "Error\n", 6);
             return 0;
         }
-
+      
         i++;
     }
     return 1;

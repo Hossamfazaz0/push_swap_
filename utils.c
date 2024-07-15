@@ -28,8 +28,12 @@ char	**ft_join_args(char **argv)
 		i++;
 	}
 	res = ft_split(tmp, ' ');
+	if(!check_if_numerique(res) || !res )
+	{
+		free(tmp);
+		return (NULL);
+	}
 	free(tmp);
-
 	return (res);
 }
 
