@@ -55,6 +55,6 @@ void sort(t_stack **sa, t_stack **sb, int *tab, int tab_size,int max);
 int *sort_tab(int *tab,int len);
 int *fill_tab(char **argv);
 int check_if_numerique(char **av);
-int check_doubles(int *tab, int len);
 void chose_sort(int len, t_stack *sa, t_stack *sb,int *tab);
+int check_doubles(int *tab, int len);
 #endif
