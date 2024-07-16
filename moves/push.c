@@ -12,28 +12,29 @@
 
 #include "../push_swap.h"
 
-void push_a(t_stack**sa,t_stack**sb)
+void	push_a(t_stack **sa, t_stack **sb)
 {
-    if(!*sb)
-    return ;
+	t_stack	*tmp;
 
-   t_stack *tmp = *sb;
-    *sb = (*sb)->next;
-   tmp->next  = *sa;
-   *sa = tmp;
-    write(1,"pa\n",3);
+	if (!*sb)
+		return ;
+	tmp = *sb;
+	*sb = (*sb)->next;
+	tmp->next = *sa;
+	*sa = tmp;
+	write(1, "pa\n", 3);
 }
-void push_b(t_stack **sa, t_stack **sb)
+void	push_b(t_stack **sa, t_stack **sb)
 {
-    if (sa == NULL || *sa == NULL) {
-        return;
-    }
-    
-    t_stack *tmp = *sa; 
-    *sa = (*sa)->next;  
-    tmp->next = *sb;  
-    *sb = tmp;      
+	t_stack	*tmp;
 
-    write(1, "pb\n", 3);
+	if (sa == NULL || *sa == NULL)
+	{
+		return ;
+	}
+	tmp = *sa;
+	*sa = (*sa)->next;
+	tmp->next = *sb;
+	*sb = tmp;
+	write(1, "pb\n", 3);
 }
-

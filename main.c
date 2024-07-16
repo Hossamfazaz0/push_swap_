@@ -6,37 +6,13 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/16 01:09:58 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/16 01:58:55 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-double	ft_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	double	result;
-
-	i = 0;
-	sign = 1;
-	result = 0;
-	while (isspace(str[i]))
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + str[i] - '0';
-		i++;
-	}
-	return (result * sign);
-}
-
-t_stack	*init_stack(t_stack **stack, int *tab,int len)
+t_stack	*init_stack(t_stack **stack, int *tab, int len)
 {
 	t_stack	*new;
 	int		i;
@@ -76,70 +52,54 @@ void	free_stack(t_stack *sa, t_stack *sb, char **av, int *tab)
 	while (av[i])
 		free(av[i++]);
 	free(av);
-    free(tab);
+	free(tab);
 }
 
-int *fill_tab(char **argv)
+int	*fill_tab(char **argv)
 {
-    int		i;
-    int		*tab;
+	int	i;
+	int	*tab;
 
-    i = 0;
-    while (*argv[i] != '\0')
-        i++;
-    tab = (int *)malloc(sizeof(int) * i);
-    if (!tab)
-        return (NULL);
-    i = 0;
-    while (*argv[i] != '\0')
-    {
-        tab[i] = ft_atoi(argv[i]);
-        i++;
-    }
-    return (tab);
-}
-void check_algo(t_stack *sa,t_stack *sb,int *tab,int len, char **argv)
-{
-	if(check_doubles(tab,len))
+	i = 0;
+	while (*argv[i] != '\0')
+		i++;
+	tab = (int *)malloc(sizeof(int) * i);
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (*argv[i] != '\0')
 	{
-		free_stack(sa, sb, argv,tab);
-		write(2,"Error\n",6);
-		return;
+		tab[i] = ft_atoi(argv[i]);
+		i++;
 	}
-    if (len == 3)
-		sort_three(&sa);
-	else if (len > 5 && len <= 100)
-		sort(&sa, &sb, tab, len, len / 4);
-	else
-		sort(&sa, &sb, tab, len, 30);
-	free_stack(sa, sb, argv,tab);
+	return (tab);
 }
 
 int	main(int ac, char **av)
 {
+	t_stack	*sa;
+	t_stack	*sb;
+	int		len;
+	char	**argv;
+	int		*tab;
+
 	if (ac < 4)
 		return (0);
-	t_stack *sa;
-	t_stack *sb ;
-	int len;
-	char **argv;
-	int *tab;
-
-    len = 0;
-    sa = NULL;
-    sb = NULL;
+	len = 0;
+	sa = NULL;
+	sb = NULL;
 	argv = ft_join_args(av);
 	if (!argv)
 		return (0);
 	while (*argv[len] != '\0')
 		len++;
-	if(!check_if_numerique(argv))
+	if (!check_if_numerique(argv))
 	{
-		free_stack(sa,sb,argv,0);
-		return 0;
+		free_stack(sa, sb, argv, 0);
+		return (0);
 	}
 	tab = fill_tab(argv);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);
-	check_algo(sa,sb,tab,len,argv);
-} 
+	check_algo(sa, sb, tab, argv);
+}

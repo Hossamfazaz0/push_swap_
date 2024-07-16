@@ -12,33 +12,37 @@
 
 #include "../push_swap.h"
 
-void rotate_reverse_a(t_stack **sa)
+void	rotate_reverse_a(t_stack **sa)
 {
-    if (!*sa || !(*sa)->next)
-        return;
-    t_stack *tmp = *sa;
-    while (tmp->next->next)
-        tmp = tmp->next;
-    ft_add_front(sa, tmp->next);
-    tmp->next = NULL;
-    write(1, "rra\n", 4);
+	t_stack	*tmp;
+
+	if (!*sa || !(*sa)->next)
+		return ;
+	tmp = *sa;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	ft_add_front(sa, tmp->next);
+	tmp->next = NULL;
+	write(1, "rra\n", 4);
 }
 
-void rotate_reverse_b(t_stack **sb)
+void	rotate_reverse_b(t_stack **sb)
 {
-    if (!*sb || !(*sb)->next)
-        return;
-    t_stack *tmp = *sb;
-    while (tmp->next->next)
-        tmp = tmp->next;
-    ft_add_front(sb, tmp->next);
-    tmp->next = NULL;
-    write(1, "rrb\n", 4);
+	t_stack	*tmp;
+
+	if (!*sb || !(*sb)->next)
+		return ;
+	tmp = *sb;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	ft_add_front(sb, tmp->next);
+	tmp->next = NULL;
+	write(1, "rrb\n", 4);
 }
 
-void rotate_reverse_ab(t_stack **sa, t_stack **sb)
+void	rotate_reverse_ab(t_stack **sa, t_stack **sb)
 {
-    rotate_reverse_a(sa);
-    rotate_reverse_b(sb);
-    write(1, "rrr\n", 4);
+	rotate_reverse_a(sa);
+	rotate_reverse_b(sb);
+	write(1, "rrr\n", 4);
 }

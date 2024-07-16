@@ -29,10 +29,8 @@ char	**ft_join_args(char **argv)
 	}
 	res = ft_split(tmp, ' ');
 	free(tmp);
-
 	return (res);
 }
-
 
 void	ft_add_front(t_stack **stack, t_stack *new)
 {
@@ -43,7 +41,7 @@ void	ft_add_front(t_stack **stack, t_stack *new)
 }
 void	ft_add_back(t_stack **stack, t_stack *new)
 {
-	t_stack	*tmp;
+	t_stack *tmp;
 
 	if (!new)
 		return ;

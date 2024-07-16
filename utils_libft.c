@@ -12,21 +12,43 @@
 
 #include "push_swap.h"
 
-int		ft_strlen(char *str)
+double	ft_atoi(const char *str)
 {
-    int	i;
+	int		i;
+	int		sign;
+	double	result;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (isspace(str[i]))
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (result * sign);
+}
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 char	*ft_strdup(const char *s1)
 {
 	char	*p;
-	int	len;
-	int	j;
+	int		len;
+	int		j;
 
 	len = ft_strlen((char *)s1);
 	p = (char *)malloc((len + 1) * sizeof(char));
@@ -69,35 +91,35 @@ char	*ft_strjoin(char *s1, char *s2)
 }
 char	**ft_split(char *str, char c)
 {
-    char	**res;
-    int		i;
-    int		j;
-    int		k;
+	char	**res;
+	int		i;
+	int		j;
+	int		k;
 
-    i = 0;
-    j = 0;
-    res = (char **)malloc(sizeof(char *) * (ft_strlen(str) + 1));
-    if (!res)
-        return (NULL);
-    while (str[i])
-    {
-        k = 0;
-        res[j] = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
-        if (!res[j])
-            return (NULL);
-        while (str[i] == c)
-            i++;
-        while (str[i] && str[i] != c)
-            res[j][k++] = str[i++];
-        res[j][k] = '\0';
-        j++;
-    }
-    res[j] = NULL;
-    return (res);
+	i = 0;
+	j = 0;
+	res = (char **)malloc(sizeof(char *) * (ft_strlen(str) + 1));
+	if (!res)
+		return (NULL);
+	while (str[i])
+	{
+		k = 0;
+		res[j] = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+		if (!res[j])
+			return (NULL);
+		while (str[i] == c)
+			i++;
+		while (str[i] && str[i] != c)
+			res[j][k++] = str[i++];
+		res[j][k] = '\0';
+		j++;
+	}
+	res[j] = NULL;
+	return (res);
 }
-int ft_lstsize(t_stack *lst)
+int	ft_lstsize(t_stack *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (lst)
@@ -107,4 +129,3 @@ int ft_lstsize(t_stack *lst)
 	}
 	return (i);
 }
-
