@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:42 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/09 15:58:42 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/17 11:09:30 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	push_a(t_stack **sa, t_stack **sb)
 	*sa = tmp;
 	write(1, "pa\n", 3);
 }
+
 void	push_b(t_stack **sa, t_stack **sb)
 {
 	t_stack	*tmp;

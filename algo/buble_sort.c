@@ -11,25 +11,29 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-int *sort_tab(int *tab,int len)
+
+int	*sort_tab(int *tab, int len)
 {
-    int i = 0;
-    int j = 0;
-    while(i<len)
-    {
-        j = 0;
-        while (j<len)
-        {
-            if (tab[i]<tab[j])
-            {
-                int tmp = tab[i];
-                tab[i] = tab[j];
-                tab[j] = tmp;
-            }
-            j++;
-        }
-        i++;
-        
-    }
-    return tab;
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	j = 0;
+	while (i < len)
+	{
+		j = 0;
+		while (j < len)
+		{
+			if (tab[i] < tab[j])
+			{
+				tmp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (tab);
 }

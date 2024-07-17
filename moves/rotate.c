@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:48 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/09 15:58:48 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/17 11:09:56 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@ void	rotate_a(t_stack **stack)
 	{
 		first = *stack;
 		last = *stack;
-		// Find the last node
 		while (last->next)
 		{
 			last = last->next;
 		}
-		// Move the first node to the end
 		*stack = first->next;
 		first->next = NULL;
 		last->next = first;
-		write(1, "ra\n", 3); // Print the operation
+		write(1, "ra\n", 3);
 	}
 }
 
@@ -42,7 +40,7 @@ void	rotate_b(t_stack **sb)
 
 	if (sb == NULL || *sb == NULL || (*sb)->next == NULL)
 	{
-		return ; // Handle edge cases
+		return ;
 	}
 	tmp = *sb;
 	*sb = (*sb)->next;
@@ -55,6 +53,7 @@ void	rotate_b(t_stack **sb)
 	current->next = tmp;
 	write(1, "rb\n", 3);
 }
+
 void	rotate_ab(t_stack **sa, t_stack **sb)
 {
 	rotate_a(sa);

@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:59 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/16 18:34:27 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/17 11:03:59 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	check_algo(t_stack *sa, t_stack *sb, int *tab, char **argv)
 	if (len == 3)
 		sort_three(&sa);
 	else if (len > 5 && len <= 100)
-		sort(&sa, &sb, tab, len, len / 4);
+		sort(&sa, &sb, tab, len);
 	else
-		sort(&sa, &sb, tab, len, 30);
+		sort(&sa, &sb, tab, len);
 	free_stack(sa, sb, argv, tab);
 }

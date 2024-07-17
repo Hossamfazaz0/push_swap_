@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:59:06 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/09 15:59:06 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/17 10:58:27 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ double	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
+
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -63,6 +64,7 @@ char	*ft_strdup(const char *s1)
 	p[j] = '\0';
 	return (p);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
@@ -89,34 +91,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (str);
 }
-char	**ft_split(char *str, char c)
-{
-	char	**res;
-	int		i;
-	int		j;
-	int		k;
 
-	i = 0;
-	j = 0;
-	res = (char **)malloc(sizeof(char *) * (ft_strlen(str) + 1));
-	if (!res)
-		return (NULL);
-	while (str[i])
-	{
-		k = 0;
-		res[j] = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
-		if (!res[j])
-			return (NULL);
-		while (str[i] == c)
-			i++;
-		while (str[i] && str[i] != c)
-			res[j][k++] = str[i++];
-		res[j][k] = '\0';
-		j++;
-	}
-	res[j] = NULL;
-	return (res);
-}
 int	ft_lstsize(t_stack *lst)
 {
 	int	i;
