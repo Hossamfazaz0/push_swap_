@@ -28,9 +28,9 @@ void	check_algo(t_stack *sa, t_stack *sb, int *tab, char **argv)
 	if (len == 3)
 		sort_three(&sa);
 	else if (len == 4)
-		sort_four(&sa,&sb);
+		sort_four(&sa, &sb);
 	else if (len == 5)
-		sort_five(&sa,&sb);
+		sort_five(&sa, &sb);
 	else if (len > 5 && len <= 100)
 		sort(&sa, &sb, tab, len);
 	else

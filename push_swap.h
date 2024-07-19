@@ -51,17 +51,17 @@ void				sort_four(t_stack **sa, t_stack **sb);
 void				sort(t_stack **sa, t_stack **sb, int *tab, int tab_size);
 int					*sort_tab(int *tab, int len);
 int					*fill_tab(char **argv);
-int 				find_max_index(t_stack *sb, int max_val);
-void 				check_end(int *start, int *end, int tab_size);
+int					find_max_index(t_stack *sb, int max_val);
+void				check_end(int *start, int *end, int tab_size);
 int					check_if_numerique(char **av);
 void				check_algo(t_stack *sa, t_stack *sb, int *tab, char **argv);
 int					check_doubles(int *tab, int len);
 void				free_stack(t_stack *sa, t_stack *sb, char **av, int *tab);
-void sort_five(t_stack **sa,t_stack **sb);
-void sort_four(t_stack **sa, t_stack **sb);
-void	check_end(int *start, int *end, int tab_size);
-int	find_max_index(t_stack *sb, int max_val);
-int	list_length(t_stack *stack);
-int	get_max(t_stack *stack);
+void				sort_five(t_stack **sa, t_stack **sb);
+void				sort_four(t_stack **sa, t_stack **sb);
+void				check_end(int *start, int *end, int tab_size);
+int					find_max_index(t_stack *sb, int max_val);
+int					list_length(t_stack *stack);
+int					get_max(t_stack *stack);
 
 #endif
