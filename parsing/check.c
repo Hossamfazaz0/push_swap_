@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/16 18:33:45 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/21 23:01:44 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	is_num(char *av)
 	skip_spaces(&av);
 	if (av[i] == '-' || av[i] == '+')
 		i++;
-	while (av[i])
+	while (av[i] != '\0')
 	{
-		if (av[i] < '0' || av[i] > '9')
-			return (0);
+		if (av[i] >= '0' || av[i] <= '9')
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_if_numerique(char **av)
