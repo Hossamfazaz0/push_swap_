@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/16 01:58:55 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/24 09:56:12 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	free_stack(t_stack *sa, t_stack *sb, char **av, int *tab)
 		free(av[i++]);
 	free(av);
 	free(tab);
+	exit(0);
 }
 
 int	*fill_tab(char **argv)
@@ -75,6 +76,45 @@ int	*fill_tab(char **argv)
 	return (tab);
 }
 
+int check(char **str)
+{
+    int i;
+    int j;
+    int sign;
+
+    i = 1;
+    while (str[i])
+    {
+        j = 0;
+        sign = 0;
+        while (str[i][j] == ' ' || str[i][j] == '\t')
+            j++;
+        if (str[i][j] == '\0') return 0;
+        while (str[i][j])
+        {
+            if (str[i][j] == '-' || str[i][j] == '+')
+            {
+                if (sign) return 0;  
+                sign = 1;
+                j++;
+                if (str[i][j] == '\0') return 0; 
+            }
+            else if (str[i][j] == ' ' || str[i][j] == '\t')
+            {
+                while (str[i][j] == ' ' || str[i][j] == '\t')
+                    j++;
+                if (str[i][j] && (str[i][j] < '0' || str[i][j] > '9'))
+                    return 0;
+            }
+             if (str[i][j] < '0' || str[i][j] > '9')
+                return 0;
+            j++;
+        }
+        i++;
+    }
+    return 1;
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*sa;
@@ -83,22 +123,27 @@ int	main(int ac, char **av)
 	char	**argv;
 	int		*tab;
 
-	if (ac < 4)
-		return (0);
 	len = 0;
 	sa = NULL;
 	sb = NULL;
-	argv = ft_join_args(av);
-	if (!argv)
+	if (ac < 2)
 		return (0);
+	
+	argv = ft_join_args(av);
 	while (*argv[len] != '\0')
 		len++;
-	if (!check_if_numerique(argv))
-	{
-		free_stack(sa, sb, argv, 0);
+	if (!argv)
 		return (0);
-	}
 	tab = fill_tab(argv);
+	if (!check(av) || check_doubles(tab, len))
+	{
+		write(2, "Error\n", 6);
+		free_stack(sa, sb, argv, tab);
+		
+	}
+		
+	if (!check_if_numerique(argv) || len < 3)
+		free_stack(sa, sb, argv, tab);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);
 	check_algo(sa, sb, tab, argv);
