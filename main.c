@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/24 09:56:12 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/26 05:54:17 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	free_stack(t_stack *sa, t_stack *sb, char **av, int *tab)
 		free(av[i++]);
 	free(av);
 	free(tab);
-	exit(0);
 }
 
 int	*fill_tab(char **argv)
@@ -75,43 +74,49 @@ int	*fill_tab(char **argv)
 	}
 	return (tab);
 }
+int to_skip(char c) {
+    if (c == ' '  || c == '\t' || c == '-' || c == '+')
+        return 1;
+    else
+        return 0;
+}
 
-int check(char **str)
-{
-    int i;
-    int j;
-    int sign;
+int is_no_digit(char *str) {
+    int i = 0;
+    int len = ft_strlen(str);
 
-    i = 1;
-    while (str[i])
-    {
-        j = 0;
-        sign = 0;
-        while (str[i][j] == ' ' || str[i][j] == '\t')
-            j++;
-        if (str[i][j] == '\0') return 0;
-        while (str[i][j])
-        {
-            if (str[i][j] == '-' || str[i][j] == '+')
-            {
-                if (sign) return 0;  
-                sign = 1;
-                j++;
-                if (str[i][j] == '\0') return 0; 
-            }
-            else if (str[i][j] == ' ' || str[i][j] == '\t')
-            {
-                while (str[i][j] == ' ' || str[i][j] == '\t')
-                    j++;
-                if (str[i][j] && (str[i][j] < '0' || str[i][j] > '9'))
-                    return 0;
-            }
-             if (str[i][j] < '0' || str[i][j] > '9')
-                return 0;
-            j++;
-        }
-        i++;
+    while (len > 0 && to_skip(str[len - 1])) {
+        len--;
     }
+
+    if (len == 0)
+        return 1;
+
+    while (i < len) {
+        if (to_skip(str[i])) {
+            i++;
+	
+        } if (str[i] < '0' || str[i] > '9') {
+            return 1;
+        } else {
+            i++;
+        }
+    }
+    return 0;
+}
+	int check(char **str)
+	{
+	    int i =1;
+	    while(str[i])
+	    {
+	        if(!is_no_digit(str[i]))
+	            i++;
+	        else
+	        {
+	            write(2,"Error\n",6);
+	            return 0;        
+		}
+}
     return 1;
 }
 
@@ -123,27 +128,18 @@ int	main(int ac, char **av)
 	char	**argv;
 	int		*tab;
 
+	(void) ac;
 	len = 0;
 	sa = NULL;
 	sb = NULL;
-	if (ac < 2)
-		return (0);
-	
+	check(av);
 	argv = ft_join_args(av);
-	while (*argv[len] != '\0')
-		len++;
 	if (!argv)
 		return (0);
+	while (*argv[len] != '\0')
+		len++;
+	
 	tab = fill_tab(argv);
-	if (!check(av) || check_doubles(tab, len))
-	{
-		write(2, "Error\n", 6);
-		free_stack(sa, sb, argv, tab);
-		
-	}
-		
-	if (!check_if_numerique(argv) || len < 3)
-		free_stack(sa, sb, argv, tab);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);
 	check_algo(sa, sb, tab, argv);

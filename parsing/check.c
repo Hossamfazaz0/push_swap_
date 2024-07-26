@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/24 09:54:42 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/16 18:33:45 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,4 @@ int	check_if_numerique(char **av)
 		i++;
 	}
 	return (1);
-}
-void print_error()
-{
-	write(2, "Error\n", 6);
-	exit(1);
 }
