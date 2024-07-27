@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/26 05:54:17 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:40:28 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,51 +74,6 @@ int	*fill_tab(char **argv)
 	}
 	return (tab);
 }
-int to_skip(char c) {
-    if (c == ' '  || c == '\t' || c == '-' || c == '+')
-        return 1;
-    else
-        return 0;
-}
-
-int is_no_digit(char *str) {
-    int i = 0;
-    int len = ft_strlen(str);
-
-    while (len > 0 && to_skip(str[len - 1])) {
-        len--;
-    }
-
-    if (len == 0)
-        return 1;
-
-    while (i < len) {
-        if (to_skip(str[i])) {
-            i++;
-	
-        } if (str[i] < '0' || str[i] > '9') {
-            return 1;
-        } else {
-            i++;
-        }
-    }
-    return 0;
-}
-	int check(char **str)
-	{
-	    int i =1;
-	    while(str[i])
-	    {
-	        if(!is_no_digit(str[i]))
-	            i++;
-	        else
-	        {
-	            write(2,"Error\n",6);
-	            return 0;        
-		}
-}
-    return 1;
-}
 
 int	main(int ac, char **av)
 {
@@ -128,17 +83,20 @@ int	main(int ac, char **av)
 	char	**argv;
 	int		*tab;
 
-	(void) ac;
+	(void)ac;
 	len = 0;
 	sa = NULL;
 	sb = NULL;
-	check(av);
+	if (!check(av))
+	{
+		write(2, "Error\n", 6);
+		return (0);
+	}
 	argv = ft_join_args(av);
 	if (!argv)
 		return (0);
 	while (*argv[len] != '\0')
 		len++;
-	
 	tab = fill_tab(argv);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);

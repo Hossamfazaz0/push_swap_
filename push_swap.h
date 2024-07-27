@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:59:01 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/23 01:20:41 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:38:21 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int					*sort_tab(int *tab, int len);
 int					*fill_tab(char **argv);
 int					find_max_index(t_stack *sb, int max_val);
 void				check_end(int *start, int *end, int tab_size);
-int					check_if_numerique(char **av);
 void				check_algo(t_stack *sa, t_stack *sb, int *tab, char **argv);
 int					check_doubles(int *tab, int len);
 void				free_stack(t_stack *sa, t_stack *sb, char **av, int *tab);
@@ -63,5 +62,5 @@ void				check_end(int *start, int *end, int tab_size);
 int					find_max_index(t_stack *sb, int max_val);
 int					list_length(t_stack *stack);
 int					get_max(t_stack *stack);
-
+int					check(char **str);
 #endif

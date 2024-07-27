@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/16 18:33:45 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/27 12:39:13 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,41 +32,63 @@ int	check_doubles(int *tab, int len)
 	return (0);
 }
 
-void	skip_spaces(char **av)
+int	to_skip(char c)
 {
-	while (**av == ' ' || **av == '\t')
-		(*av)++;
+	if (c == ' ' || c == '\t' || c == '-' || c == '+')
+		return (1);
+	else
+		return (0);
 }
 
-int	is_num(char *av)
+int	check_dup(const char *str)
 {
 	int	i;
 
 	i = 0;
-	skip_spaces(&av);
-	if (av[i] == '-' || av[i] == '+')
-		i++;
-	while (av[i])
+	while (str[i])
 	{
-		if (av[i] < '0' || av[i] > '9')
-			return (0);
+		if ((str[i] == '-' || str[i] == '+') && (str[i + 1] < '0' || str[i
+					+ 1] > '9'))
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
-int	check_if_numerique(char **av)
+int	is_no_digit(char *str)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(str);
+	while (len > 0 && to_skip(str[len - 1]))
+	{
+		len--;
+	}
+	if (len == 0 || check_dup(str))
+		return (1);
+	while (i < len)
+	{
+		if (to_skip(str[i]))
+			i++;
+		else if (str[i] < '0' || str[i] > '9')
+			return (1);
+		else
+			i++;
+	}
+	return (0);
+}
+
+int	check(char **str)
 {
 	int	i;
 
-	i = 0;
-	while (av[i])
+	i = 1;
+	while (str[i])
 	{
-		if (!is_num(av[i]) || ft_atoi(av[i]) > 2147483647)
-		{
-			write(2, "Error\n", 6);
+		if (is_no_digit(str[i]))
 			return (0);
-		}
 		i++;
 	}
 	return (1);
