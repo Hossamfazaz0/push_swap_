@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/27 12:40:28 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/28 03:06:36 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	free_stack(t_stack *sa, t_stack *sb, char **av, int *tab)
 	free(av);
 	free(tab);
 }
+
+
 
 int	*fill_tab(char **argv)
 {
