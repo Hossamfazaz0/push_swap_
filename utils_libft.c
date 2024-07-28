@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:59:06 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/28 02:06:08 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/28 23:34:33 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,24 +65,33 @@ char	*ft_strdup(const char *s1)
 	return (p);
 }
 
-char *ft_strjoin(char *s1, char *s2) {
-    int i = 0, j = 0;
-    char *str;
+char	*ft_strjoin(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+	char	*str;
 
-    if (!s2) return NULL;
-    if (!s1) s1 = strdup("");
-    str = malloc(strlen(s1) + strlen(s2) + 1);
-    if (!str) return NULL;
-    while (s1[i]) {
-        str[i] = s1[i];
-        i++;
-    }
-    while (s2[j]) {
-        str[i++] = s2[j++];
-    }
-    str[i] = '\0';
-    free(s1);
-    return str;
+	i = 0;
+	j = 0;
+	if (!s2)
+		return (NULL);
+	if (!s1)
+		s1 = strdup("");
+	str = malloc(strlen(s1) + strlen(s2) + 1);
+	if (!str)
+		return (NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		str[i++] = s2[j++];
+	}
+	str[i] = '\0';
+	free(s1);
+	return (str);
 }
 
 int	ft_lstsize(t_stack *lst)

@@ -56,8 +56,6 @@ void	free_stack(t_stack *sa, t_stack *sb, char **av, int *tab)
 	exit(0);
 }
 
-
-
 int	*fill_tab(char **argv)
 {
 	int	i;

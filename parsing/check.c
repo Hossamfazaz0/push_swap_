@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/28 21:08:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/28 23:30:44 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,59 +32,57 @@ int	check_doubles(int *tab, int len)
 	return (0);
 }
 
-int skip(char c)
+int	skip(char c)
 {
-    return (c == ' ' || c == '\t');
+	return (c == ' ' || c == '\t');
 }
 
-int is_number(const char *str, int start, int end)
+int	is_number(const char *str, int start, int end)
 {
-    int i = start;
-    int has_digit = 0;
+	int	i;
+	int	has_digit;
 
-    // Check for valid signs
-    if (str[i] == '-' || str[i] == '+')
-    {
-        i++;
-    }
-
-    // Check the rest of the string for numeric characters
-    while (i <= end)
-    {
-        if (!isdigit(str[i]))
-            return 0;
-        has_digit = 1;
-        i++;
-    }
-
-    return has_digit;
+	i = start;
+	has_digit = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (i <= end)
+	{
+		if (!isdigit(str[i]))
+			return (0);
+		has_digit = 1;
+		i++;
+	}
+	return (has_digit);
 }
 
-int not_number(const char *str)
+int	not_number(const char *str)
 {
-    int i = 0;
-    int start = 0;
-    int len = strlen(str);
-    while (skip(str[i]))
-        i++;
-    if (i == len)
-        return 1;
-    i = 0;
+	int	i;
+	int	start;
+	int	len;
 
-    while (i < len)
-    {
-        while (skip(str[i]) && i < len)
-            i++;
-        start = i;
-        while (!skip(str[i]) && i < len)
-            i++;
-        if (i > start && !is_number(str, start, i - 1))
-            return 1;
-        else if (start == i && i < len)
-            return 1;
-    }
-
-    return 0;
+	i = 0;
+	start = 0;
+	len = strlen(str);
+	while (skip(str[i]))
+		i++;
+	if (i == len)
+		return (1);
+	i = 0;
+	while (i < len)
+	{
+		while (skip(str[i]) && i < len)
+			i++;
+		start = i;
+		while (!skip(str[i]) && i < len)
+			i++;
+		if (i > start && !is_number(str, start, i - 1))
+			return (1);
+		else if (start == i && i < len)
+			return (1);
+	}
+	return (0);
 }
 
 int	check(char **str)
@@ -94,7 +92,8 @@ int	check(char **str)
 	i = 1;
 	while (str[i])
 	{
-		if (not_number(str[i]) || ft_atoi(str[i]) > INT_MAX || ft_atoi(str[i]) < INT_MIN)
+		if (not_number(str[i]) || ft_atoi(str[i]) > INT_MAX
+			|| ft_atoi(str[i]) < INT_MIN)
 			return (0);
 		i++;
 	}
