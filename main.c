@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 19:08:53 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/28 03:06:36 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/28 21:00:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	free_stack(t_stack *sa, t_stack *sb, char **av, int *tab)
 		free(av[i++]);
 	free(av);
 	free(tab);
+	exit(0);
 }
 
 
@@ -95,10 +96,10 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	argv = ft_join_args(av);
-	if (!argv)
-		return (0);
 	while (*argv[len] != '\0')
 		len++;
+	if (len < 2)
+		free_stack(sa, sb, argv, 0);
 	tab = fill_tab(argv);
 	sa = init_stack(&sa, tab, len);
 	sort_tab(tab, len);

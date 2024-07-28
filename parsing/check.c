@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/28 03:22:26 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/28 21:08:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int skip(char c)
     return (c == ' ' || c == '\t');
 }
 
-// Function to check if a string segment is a valid number
 int is_number(const char *str, int start, int end)
 {
     int i = start;
@@ -61,7 +60,6 @@ int is_number(const char *str, int start, int end)
     return has_digit;
 }
 
-// Function to check if a string contains only valid numbers separated by spaces
 int not_number(const char *str)
 {
     int i = 0;
@@ -96,7 +94,7 @@ int	check(char **str)
 	i = 1;
 	while (str[i])
 	{
-		if (not_number(str[i]))
+		if (not_number(str[i]) || ft_atoi(str[i]) > INT_MAX || ft_atoi(str[i]) < INT_MIN)
 			return (0);
 		i++;
 	}
