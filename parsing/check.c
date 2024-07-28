@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/28 23:30:44 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/28 23:43:19 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	skip(char c)
 	return (c == ' ' || c == '\t');
 }
 
-int	is_number(const char *str, int start, int end)
+int	is_number(char *str, int start, int end)
 {
 	int	i;
 	int	has_digit;
@@ -56,7 +56,7 @@ int	is_number(const char *str, int start, int end)
 	return (has_digit);
 }
 
-int	not_number(const char *str)
+int	not_number(char *str)
 {
 	int	i;
 	int	start;
@@ -64,7 +64,7 @@ int	not_number(const char *str)
 
 	i = 0;
 	start = 0;
-	len = strlen(str);
+	len = ft_strlen(str);
 	while (skip(str[i]))
 		i++;
 	if (i == len)

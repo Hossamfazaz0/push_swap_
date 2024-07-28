@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:59 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/27 14:23:06 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/28 23:49:31 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ void	check_algo(t_stack *sa, t_stack *sb, int *tab, char **argv)
 		len++;
 	if (check_doubles(tab, len))
 	{
-		free_stack(sa, sb, argv, tab);
 		write(2, "Error\n", 6);
-		return ;
+		free_stack(sa, sb, argv, tab);
 	}
 	if (len == 2)
 		sort_two(&sa);
