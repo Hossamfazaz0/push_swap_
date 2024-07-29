@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:42 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/17 11:09:30 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/29 01:21:45 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void	push_b(t_stack **sa, t_stack **sb)
 	t_stack	*tmp;
 
 	if (sa == NULL || *sa == NULL)
-	{
 		return ;
-	}
 	tmp = *sa;
 	*sa = (*sa)->next;
 	tmp->next = *sb;
