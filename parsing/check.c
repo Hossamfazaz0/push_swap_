@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 17:31:14 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/29 17:08:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	not_number(char *str)
 	len = ft_strlen(str);
 	while (skip(str[i]))
 		i++;
-	if (i == len || len > 11)
+	if (i == len)
 		return (1);
 	i = 0;
 	while (i < len)
