@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:59:01 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/27 12:38:21 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/07/29 18:45:53 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ int					find_max_index(t_stack *sb, int max_val);
 int					list_length(t_stack *stack);
 int					get_max(t_stack *stack);
 int					check(char **str);
+void				sort_two(t_stack **sa);
 #endif
