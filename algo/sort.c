@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:18 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 18:53:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/29 21:01:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	sort_sa(t_stack **sa, t_stack **sb, int *tab, int len)
 
 	start = 0;
 	if (len > 5 && len <= 100)
-		end = len / 4;
+		end = len / 6;
 	else
-		end = 35;
+		end = 40;
 	while (*sa != NULL)
 	{
 		if ((*sa)->data >= tab[start] && (*sa)->data <= tab[end])

@@ -6,11 +6,25 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:59 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 18:50:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/29 21:10:53 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int check_sorted(t_stack *sa)
+{
+	t_stack *tmp;
+
+	tmp = sa;
+	while (tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 void	sort_two(t_stack **sa)
 {
@@ -30,6 +44,8 @@ void	check_algo(t_stack *sa, t_stack *sb, int *tab, char **argv)
 		write(2, "Error\n", 6);
 		free_stack(sa, sb, argv, tab);
 	}
+	if (check_sorted(sa))
+		free_stack(sa, sb, argv, tab);
 	if (len == 2)
 		sort_two(&sa);
 	else if (len == 3)
