@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   chosing_algo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:59 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 21:10:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/31 00:56:49 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int check_sorted(t_stack *sa)
+int	check_sorted(t_stack *sa)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = sa;
 	while (tmp->next)

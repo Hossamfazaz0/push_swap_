@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 19:48:23 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 18:48:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/31 00:57:06 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,4 @@ void	sort_five(t_stack **sa, t_stack **sb)
 		push_a(sa, sb);
 		rotate_a(sa);
 	}
-	
 }

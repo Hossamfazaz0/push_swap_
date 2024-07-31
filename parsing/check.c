@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 17:08:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/30 23:38:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	is_number(char *str, int start, int end)
 		i++;
 	while (i <= end)
 	{
-		if (!isdigit(str[i]))
+		if (str[i] < '0' || str[i] > '9')
 			return (0);
 		has_digit = 1;
 		i++;
