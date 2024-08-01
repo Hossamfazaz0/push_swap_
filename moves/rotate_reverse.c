@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:45 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/09 15:58:45 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/08/01 02:23:43 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	rotate_reverse_a(t_stack **sa)
 {
 	t_stack	*tmp;
 
-	if (!*sa || !(*sa)->next)
-		return ;
 	tmp = *sa;
 	while (tmp->next->next)
 		tmp = tmp->next;
@@ -30,8 +28,6 @@ void	rotate_reverse_b(t_stack **sb)
 {
 	t_stack	*tmp;
 
-	if (!*sb || !(*sb)->next)
-		return ;
 	tmp = *sb;
 	while (tmp->next->next)
 		tmp = tmp->next;

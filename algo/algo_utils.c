@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 01:44:12 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/17 11:01:09 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/08/01 02:55:49 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,8 @@ int	get_max(t_stack *stack)
 void	check_end(int *start, int *end, int tab_size)
 {
 	(*start)++;
-	(*end)++;
-	if (*end >= tab_size)
-	{
-		*end = tab_size - 1;
-	}
+	if (*end < tab_size)
+		(*end)++;
 }
 
 int	find_max_index(t_stack *sb, int max_val)

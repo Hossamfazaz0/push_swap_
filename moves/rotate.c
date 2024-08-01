@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:48 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/17 11:09:56 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/08/01 02:43:53 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,18 @@ void	rotate_a(t_stack **stack)
 
 void	rotate_b(t_stack **sb)
 {
-	t_stack	*tmp;
-	t_stack	*current;
+	t_stack	*first;
+	t_stack	*last;
 
-	if (sb == NULL || *sb == NULL || (*sb)->next == NULL)
-	{
-		return ;
-	}
-	tmp = *sb;
+	first = *sb;
 	*sb = (*sb)->next;
-	tmp->next = NULL;
-	current = *sb;
-	while (current->next != NULL)
+	first->next = NULL;
+	last = *sb;
+	while (last->next != NULL)
 	{
-		current = current->next;
+		last = last->next;
 	}
-	current->next = tmp;
+	last->next = first;
 	write(1, "rb\n", 3);
 }
 

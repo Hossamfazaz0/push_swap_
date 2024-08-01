@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:52 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/09 15:58:52 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/08/01 02:24:02 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	swap_a(t_stack **sa)
 {
 	t_stack	*tmp;
 
-	if (!*sa || !(*sa)->next)
-		return ;
 	tmp = *sa;
 	*sa = (*sa)->next;
 	tmp->next = (*sa)->next;
@@ -29,8 +27,6 @@ void	swap_b(t_stack **sb)
 {
 	t_stack	*tmp;
 
-	if (!*sb || !(*sb)->next)
-		return ;
 	tmp = *sb;
 	*sb = (*sb)->next;
 	tmp->next = (*sb)->next;

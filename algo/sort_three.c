@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:23:42 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 18:45:28 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/01 01:21:10 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,19 @@
 
 void	sort_three(t_stack **sa)
 {
-	int	a;
-	int	b;
-	int	c;
+	int	max;
+	int	max_index;
 
-	if (!*sa || !(*sa)->next || !(*sa)->next->next)
-		return ;
-	a = (*sa)->data;
-	b = (*sa)->next->data;
-	c = (*sa)->next->next->data;
-	if (a > b && b < c && a < c)
-		swap_a(sa);
-	else if (a > b && b > c)
+	max = get_max(*sa);
+	max_index = find_max_index(*sa, max);
+	while (max_index != 2)
 	{
-		swap_a(sa);
-		rotate_reverse_a(sa);
+		if (max_index == 0)
+			rotate_a(sa);
+		else
+			rotate_reverse_a(sa);
+		max_index = find_max_index(*sa, max);
 	}
-	else if (a > b && b < c && a > c)
-		rotate_a(sa);
-	else if (a < b && b > c && a < c)
-	{
+	if ((*sa)->data > (*sa)->next->data)
 		swap_a(sa);
-		rotate_a(sa);
-	}
-	else if (a < b && b > c && a > c)
-		rotate_reverse_a(sa);
 }
