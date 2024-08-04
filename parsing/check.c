@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:44 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/30 23:38:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/04 06:29:00 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ int	check_doubles(int *tab, int len)
 
 int	skip(char c)
 {
-	return (c == ' ' || c == '\t');
+	return (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\r' || c == '\v' || c == '\f');
 }
 
 int	is_number(char *str, int start, int end)
 {
 	int	i;
-	int	has_digit;
 
 	i = start;
-	has_digit = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (i > end)
+		return (0);
 	while (i <= end)
 	{
 		if (str[i] < '0' || str[i] > '9')
 			return (0);
-		has_digit = 1;
 		i++;
 	}
-	return (has_digit);
+	return (1);
 }
 
 int	not_number(char *str)

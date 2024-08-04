@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:58:18 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/29 21:01:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/02 01:53:39 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sort_sa(t_stack **sa, t_stack **sb, int *tab, int len)
 	if (len > 5 && len <= 100)
 		end = len / 6;
 	else
-		end = 40;
+		end = 35;
 	while (*sa != NULL)
 	{
 		if ((*sa)->data >= tab[start] && (*sa)->data <= tab[end])

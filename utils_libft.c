@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:59:06 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/28 23:34:33 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/08/02 04:12:16 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s2)
 		return (NULL);
 	if (!s1)
-		s1 = strdup("");
-	str = malloc(strlen(s1) + strlen(s2) + 1);
+		s1 = ft_strdup("");
+	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (NULL);
 	while (s1[i])

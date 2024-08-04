@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:33:59 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/31 00:56:49 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/08/02 01:55:15 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_algo(t_stack *sa, t_stack *sb, int *tab, char **argv)
 		sort_five(&sa, &sb);
 	else if (len > 5 && len <= 100)
 		sort(&sa, &sb, tab, len);
-	else if (len > 100 && len <= 500)
+	else
 		sort(&sa, &sb, tab, len);
 	free_stack(sa, sb, argv, tab);
 }

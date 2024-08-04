@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:59:12 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/07/28 02:40:24 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/08/02 06:10:55 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 char	**ft_join_args(char **argv)
 {
-	char	*tmp;
 	char	*str;
 	char	**res;
 	int		i;
 
 	i = 1;
-	tmp = ft_strdup(" ");
+	str = ft_strdup(" ");
 	while (argv[i])
 	{
-		str = ft_strjoin(tmp, argv[i]);
-		tmp = ft_strjoin(str, " \0");
+		str = ft_strjoin(str, argv[i]);
+		str = ft_strjoin(str, " \0");
 		i++;
 	}
-	res = ft_split(tmp, ' ');
-	free(tmp);
+	res = ft_split(str, ' ');
+	free(str);
 	return (res);
 }
 
